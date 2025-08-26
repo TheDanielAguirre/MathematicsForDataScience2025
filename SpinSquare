@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spinning Square</title>
+  <style>
+    :root {
+      --size: 140px;      /* change the square size */
+      --duration: 2.5s;   /* change the spin speed */
+    }
+
+    /* Center everything nicely */
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #f7f7fb;
+    }
+
+    /* The spinning square */
+    .square {
+      width: var(--size);
+      height: var(--size);
+      background: #4f46e5;          /* deep indigo */
+      border-radius: 12px;           /* slightly rounded corners */
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      animation: spin var(--duration) linear infinite;
+    }
+
+    /* The animation itself */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Small UX touch: pause when you hover */
+    .square:hover {
+      animation-play-state: paused;
+      cursor: pointer;
+    }
+
+    .hint {
+      position: fixed;
+      bottom: 14px;
+      font-size: 14px;
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+  <div class="square" title="Hover to pause"></div>
+  <div class="hint">Hover to pause • Edit <code>--duration</code> in CSS to change speed</div>
+</body>
+</html>
